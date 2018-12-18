@@ -14,7 +14,11 @@ require 'fit_parser/version'
 require 'bindata/dsl_field_validator'
 
 module FitParser
-  def self.load_file(path)
-    File.read(::File.open(path))
+  def self.load_file(file)
+    if File.instance_of? String
+      return File.read(::File.open(file))
+    else
+      return File.read(file)
+    end
   end
 end
